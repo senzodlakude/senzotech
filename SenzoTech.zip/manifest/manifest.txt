@@ -1,0 +1,23 @@
+SenzoTech Microsite Manifest
+============================
+
+Pages:
+- index.html
+- portfolio.html
+- guides.html
+- contact.html
+
+Assets:
+- style.css
+- assets/favicon.png
+- assets/linux-guide.pdf
+- assets/ai-iot-guide.pdf
+- assets/data-science-guide.pdf
+- assets/invoice-template.pdf
+- assets/freelancer-toolkit.pdf
+- assets/client-onboarding.pdf
+
+External Links:
+- Gumroad: https://gumroad.com/senzotech
+- YouTube: https://youtube.com/@SenzoTech
+- GitHub: https://github.com/senzotech
