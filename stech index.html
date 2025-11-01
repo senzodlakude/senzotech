@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senzo Tech | Complete Digital Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1D4ED8;
+            --primary-light: #3B82F6;
+            --secondary: #10B981;
+            --accent: #F59E0B;
+            --dark: #111827;
+            --darker: #0F172A;
+            --light: #F8FAFC;
+            --gray: #6B7280;
+            --gradient: linear-gradient(135deg, var(--primary), var(--primary-light));
+            --gradient-dark: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            --gradient-hero: linear-gradient(135deg, #1E3A8A 0%, #3730A3 100%);
+            --gradient-card: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header Styles - Inspired by Apple */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 32px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            font-size: 0.95rem;
+            letter-spacing: -0.2px;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -6px;
+            left: 0;
+            background: var(--gradient);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: -0.2px;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Hero Section - Inspired by Stripe */
+        .hero {
+            padding: 180px 0 120px;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            background-size: cover;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+        }
+        
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .hero p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+        
+        /* Service Bundles - Inspired by Shopify */
+        .bundles {
+            background: var(--light);
+        }
+        
+        .bundles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+        
+        .bundle-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .bundle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .bundle-header {
+            padding: 32px 30px;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bundle-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: var(--transition);
+        }
+        
+        .bundle-card:hover .bundle-header::before {
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+        
+        .bundle-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+        
+        .bundle-features {
+            padding: 32px 30px;
+        }
+        
+        .bundle-features ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .bundle-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .bundle-features li:hover {
+            transform: translateX(5px);
+        }
+        
+        .bundle-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .bundle-features li i {
+            margin-right: 12px;
+            color: var(--secondary);
+            font-size: 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 6px;
+            border-radius: 50%;
+        }
+        
+        .bundle-button {
+            padding: 0 30px 32px;
+            text-align: center;
+        }
+        
+        /* Technical Services - Inspired by Apple */
+        .tech-services {
+            background: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .service-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        /* Additional Services Section */
+        .additional-services {
+            background: var(--light);
+        }
+        
+        .additional-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+        
+        .additional-service-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .additional-service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .additional-service-header {
+            padding: 28px 30px;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+        
+        .additional-service-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .additional-service-content {
+            padding: 30px;
+        }
+        
+        .additional-service-content ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .additional-service-content li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .additional-service-content li:last-child {
+            border-bottom: none;
+        }
+        
+        .additional-service-content li i {
+            margin-right: 12px;
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+        
+        /* CTA Section - Inspired by Stripe */
+        .cta {
+            padding: 100px 0;
+            background: var(--gradient-dark);
+            color: white;
+            text-align: center;
+            border-radius: 24px;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+            background-size: cover;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        
+        .cta p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
+        /* Footer - Inspired by Apple */
+        footer {
+            background: var(--darker);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 16px 0;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: var(--shadow-lg);
+                padding: 20px;
+                border-top: 1px solid rgba(0, 0, 0, 0.05);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.125rem;
+            }
+            
+            .bundles-grid, .additional-services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .floating-whatsapp {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+                margin-bottom: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    Senzo Tech
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#bundles">Solutions</a></li>
+                    <li><a href="#additional-services">Advanced</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="btn btn-primary" onclick="openWhatsApp()">
+                    <i class="fas fa-comment"></i> Get Started
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Complete Digital Solutions</h1>
+                <div class="tagline">Professional web design, business registration, AdSense optimization, and app development services.</div>
+                <p>Senzo Tech provides comprehensive digital solutions to help businesses establish and grow their online presence with cutting-edge technology.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('services')">
+                        <i class="fas fa-rocket"></i> Explore Services
+                    </button>
+                    <button class="btn btn-outline" onclick="openWhatsApp()" style="background: rgba(255,255,255,0.1); color: white; border-color: white;">
+                        <i class="fas fa-calendar-alt"></i> Free Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Bundles -->
+    <section class="section bundles" id="bundles">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium Solutions</h2>
+                <p>Complete packages designed for business growth and digital transformation</p>
+            </div>
+            <div class="bundles-grid">
+                <div class="bundle-card">
+                    <div class="bundle-header">
+                        <h3>Business Startup</h3>
+                        <p>Complete business launch solution</p>
+                    </div>
+                    <div class="bundle-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i>Company Registration (CIPC)</li>
+                            <li><i class="fas fa-check"></i>Professional Website Design</li>
+                            <li><i class="fas fa-check"></i>Branded Email Setup</li>
+                            <li><i class="fas fa-check"></i>Logo & Brand Identity</li>
+                            <li><i class="fas fa-check"></i>Business Plan Creation</li>
+                        </ul>
+                        <div class="bundle-button">
+                            <button class="btn btn-primary" onclick="openWhatsApp('Business Startup Package')">Launch My Business</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bundle-card">
+                    <div class="bundle-header">
+                        <h3>Digital Presence</h3>
+                        <p>Complete online visibility solution</p>
+                    </div>
+                    <div class="bundle-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i>Responsive Website Design</li>
+                            <li><i class="fas fa-check"></i>SEO Optimization</li>
+                            <li><i class="fas fa-check"></i>Google AdSense Setup</li>
+                            <li><i class="fas fa-check"></i>Social Media Integration</li>
+                            <li><i class="fas fa-check"></i>Content Management System</li>
+                        </ul>
+                        <div class="bundle-button">
+                            <button class="btn btn-primary" onclick="openWhatsApp('Digital Presence Package')">Boost My Online Presence</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bundle-card">
+                    <div class="bundle-header">
+                        <h3>App Development</h3>
+                        <p>Mobile and web application solution</p>
+                    </div>
+                    <div class="bundle-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i>Custom Mobile App Development</li>
+                            <li><i class="fas fa-check"></i>Web Application Development</li>
+                            <li><i class="fas fa-check"></i>UI/UX Design</li>
+                            <li><i class="fas fa-check"></i>Database Integration</li>
+                            <li><i class="fas fa-check"></i>App Store Deployment</li>
+                        </ul>
+                        <div class="bundle-button">
+                            <button class="btn btn-primary" onclick="openWhatsApp('App Development Package')">Build My App</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Services -->
+    <section class="section tech-services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Services</h2>
+                <p>Comprehensive digital solutions tailored to your business needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built with modern technologies for optimal performance.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Graphic Design</h3>
+                    <p>Creative visual designs including logos, branding materials, and marketing collateral.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>App Development</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO & Marketing</h3>
+                    <p>Improve your online visibility and reach your target audience effectively.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-google"></i>
+                    </div>
+                    <h3>Google AdSense</h3>
+                    <p>Setup and optimization of Google AdSense to monetize your website content.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Services</h3>
+                    <p>Cloud infrastructure setup, migration, and management for scalability.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cyber Security</h3>
+                    <p>Protect your digital assets with comprehensive security solutions.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Business Registration</h3>
+                    <p>Complete CIPC company registration services with all necessary documentation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services Section -->
+    <section class="section additional-services" id="additional-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Advanced Solutions</h2>
+                <p>Specialized services for complex business requirements</p>
+            </div>
+            <div class="additional-services-grid">
+                <div class="additional-service-card">
+                    <div class="additional-service-header">
+                        <h3>Kubernetes Deployment</h3>
+                        <p>Container Orchestration & Management</p>
+                    </div>
+                    <div class="additional-service-content">
+                        <ul>
+                            <li><i class="fas fa-check"></i>Kubernetes Cluster Setup & Configuration</li>
+                            <li><i class="fas fa-check"></i>Application Containerization</li>
+                            <li><i class="fas fa-check"></i>CI/CD Pipeline Integration</li>
+                            <li><i class="fas fa-check"></i>Auto-scaling & Load Balancing</li>
+                            <li><i class="fas fa-check"></i>Monitoring & Logging Solutions</li>
+                        </ul>
+                        <div class="bundle-button">
+                            <button class="btn btn-primary" onclick="openWhatsApp('Kubernetes Deployment')">Deploy with Kubernetes</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="additional-service-card">
+                    <div class="additional-service-header">
+                        <h3>Cloud Security</h3>
+                        <p>Advanced Security Solutions</p>
+                    </div>
+                    <div class="additional-service-content">
+                        <ul>
+                            <li><i class="fas fa-check"></i>Cloud Infrastructure Security</li>
+                            <li><i class="fas fa-check"></i>Identity & Access Management</li>
+                            <li><i class="fas fa-check"></i>Data Encryption & Protection</li>
+                            <li><i class="fas fa-check"></i>Security Compliance & Auditing</li>
+                            <li><i class="fas fa-check"></i>24/7 Security Monitoring</li>
+                        </ul>
+                        <div class="bundle-button">
+                            <button class="btn btn-primary" onclick="openWhatsApp('Cloud Security')">Secure My Infrastructure</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="additional-service-card">
+                    <div class="additional-service-header">
+                        <h3>DevOps & Automation</h3>
+                        <p>Streamlined Development Operations</p>
+                    </div>
+                    <div class="additional-service-content">
+                        <ul>
+                            <li><i class="fas fa-check"></i>Infrastructure as Code (IaC)</li>
+                            <li><i class="fas fa-check"></i>Continuous Integration/Deployment</li>
+                            <li><i class="fas fa-check"></i>Configuration Management</li>
+                            <li><i class="fas fa-check"></i>Performance Monitoring & Optimization</li>
+                            <li><i class="fas fa-check"></i>Disaster Recovery Planning</li>
+                        </ul>
+                        <div class="bundle-button">
+                            <button class="btn btn-primary" onclick="openWhatsApp('DevOps & Automation')">Automate My Workflow</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Business?</h2>
+                <p>Contact us today for a free consultation and let's discuss how we can help you achieve your digital goals with our comprehensive solutions.</p>
+                <button class="btn btn-whatsapp" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Start Conversation
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Senzo Tech</h3>
+                    <p>Your trusted partner for complete digital solutions. We help businesses establish and grow their online presence with cutting-edge technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Mobile App Development</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Graphic Design</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Digital Marketing</a></li>
+                        <li><a href="#additional-services"><i class="fas fa-chevron-right"></i> Kubernetes Deployment</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#bundles"><i class="fas fa-chevron-right"></i> Solutions</a></li>
+                        <li><a href="#additional-services"><i class="fas fa-chevron-right"></i> Advanced</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+27723491361"><i class="fas fa-phone"></i> +27 72 349 1361</a></li>
+                        <li><a href="mailto:info@senzotech.site"><i class="fas fa-envelope"></i> info@senzotech.site</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> nkomazi mpumalanga, South Africa</a></li>
+                        <li><a href="#" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Senzo Tech. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="#" class="floating-whatsapp" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Function to open WhatsApp with a predefined message
+        function openWhatsApp(service = 'General Inquiry') {
+            const phoneNumber = "27723491361"; // Replace with actual phone number
+            const message = `Hello, I'm interested in the ${service} from Senzo Tech. Can you provide more information?`;
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+        
+        // Function to scroll to a section
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        
+        // Add fade-in animation to elements when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeIn 0.8s ease forwards`;
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.service-card, .bundle-card, .additional-service-card');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
